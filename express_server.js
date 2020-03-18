@@ -1,19 +1,17 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+const bodyParser = require('body-parser');
 const PORT = 8080; //default port 8080
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 app.set('view engine', 'ejs');
 
 const urlDatabase = {
   b2xVn2: 'http://www.lighthouselabs.ca',
   '9sm5xk': 'http://www.google.com'
 };
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('Hello!');
@@ -64,8 +62,9 @@ app.post('/urls/:shortURL/delete', (req, res) => {
 
 app.post('/login', (req, res) => {
   //urlDatabase[req.params.shortURL] = req.body.login;
-  res.render(`login`); // username
-});
+  res.cookie('username', req.body.username);
+  res.redirect('/urls/');
+}); // username
 
 app.get('/hello', (req, res) => {
   res.send('<html><body>Hello <b>World</b></body></html>\n');
