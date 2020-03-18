@@ -21,10 +21,10 @@
       </div>
       <div>
         <% if (username) { %>
-        <span class="navbar-brand">Logged in as:</span>
-        <span class="navbar-brand"><%= username %>!</span>
         <form method="POST" action="/logout">
-          <button class="btn btn-link collapsed" type="submit">
+          <span class="navbar-brand">Logged in as:</span>
+          <span class="navbar-brand"><%= username %>!</span>
+          <button class="btn btn-success" type="submit">
             <span class="navbar-brand">logout</span>
           </button>
         </form>
