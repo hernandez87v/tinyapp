@@ -49,14 +49,14 @@ app.post('/urls', (req, res) => {
   res.redirect(`/urls/${shortURL}`);
 });
 
-app.post('/urls/:shortURL/:id', (req, res) => {
-  delete urlDatabase[req.params.shortURL];
+app.post('/urls/:shortURL', (req, res) => {
+  urlDatabase[req.params.shortURL] = req.body.longURL;
   res.redirect(`/urls/`);
-});
+}); // edit
 
 app.post('/urls/:shortURL/delete', (req, res) => {
   delete urlDatabase[req.params.shortURL];
-  res.redirect(`/urls/`);
+  res.redirect(`/urls/`); // delete
 });
 
 app.get('/hello', (req, res) => {

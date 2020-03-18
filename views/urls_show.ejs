@@ -25,7 +25,12 @@
         <form method="POST" action="/urls/<%= shortURL %>">
           <font size="3"><h2>Edit</h2></font
           ><label for="edit">New URL: &nbsp;&nbsp;</label
-          ><input type="text" />&nbsp;<button class="btn btn-primary">
+          ><input
+            type="text"
+            name="longURL"
+            id="edit"
+            placeholder="http://"
+          />&nbsp;<button class="btn btn-primary">
             Submit
           </button>
         </form>
