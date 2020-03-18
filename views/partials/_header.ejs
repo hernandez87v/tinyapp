@@ -1,31 +1,45 @@
-<nav>
-  <nav class="navbar navbar-expand-md navbar-dark bg-success">
-    <a class="navbar-brand" href="/urls">TinyApp</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/urls">My URLs</a>
-        <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
-      </div>
-    </div>
-    <!-- User Name with button-->
-    <form method="POST" action="/login">
-      <label for="login">Login: &nbsp;</label
-      ><input name="username" placeholder="enter user name" /><button
-        class="btn btn-primary"
+<header>
+  <nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-success">
+      <a class="navbar-brand" href="/urls">TinyApp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
-        Submit
+        <span class="navbar-toggler-icon"></span>
       </button>
-    </form>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/urls">My URLs</a>
+          <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
+        </div>
+      </div>
+      <div>
+        <% if (username) { %>
+        <span class="navbar-brand">Logged in as:</span>
+        <span class="navbar-brand"><%= username %>!</span>
+        <form method="POST" action="/logout">
+          <button class="btn btn-link collapsed" type="submit">
+            <span class="navbar-brand">logout</span>
+          </button>
+        </form>
+        <% } else { %>
+        <!-- User Name with button-->
+        <form method="POST" action="/login">
+          <label for="login"></label
+          ><input name="username" placeholder="Username" /><button
+            class="btn btn-success"
+          >
+            Login
+          </button>
+        </form>
+        <% } %>
+      </div>
+    </nav>
   </nav>
-</nav>
+</header>
