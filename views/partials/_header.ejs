@@ -20,24 +20,31 @@
         </div>
       </div>
       <div>
-        <% if (username) { %>
+        <% if (user) { %>
         <form method="POST" action="/logout">
           <span class="navbar-brand">Logged in as:</span>
-          <span class="navbar-brand"><%= username %>!</span>
-          <button class="btn btn-success" type="submit">
-            <span class="navbar-brand">logout</span>
-          </button>
+          <span class="navbar-brand"><%= user.email %></span>
+          <form method="POST" action="/logout">
+            <button class="btn btn-success" type="submit">
+              <span class="navbar-brand">logout</span>
+            </button>
         </form>
         <% } else { %>
-        <!-- User Name with button-->
+        <button class="btn btn-success" type="submit">
+          <a href="/login" class="navbar-brand">Login</a>
+        </button>
+        <button class="btn btn-success" type="submit">
+          <a href="/register" class="navbar-brand">Register</a>
+        </button>
+        <!-- User Name with button
         <form method="POST" action="/login">
           <label for="login"></label
-          ><input name="username" placeholder="Username" /><button
-            class="btn btn-success"
+          ><input name="user" placeholder="user" /><button
+            class="btn btn-success" type="submit"
           >
             Login
           </button>
-        </form>
+        </form> -->
         <% } %>
       </div>
     </nav>

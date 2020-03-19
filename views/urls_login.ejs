@@ -16,23 +16,23 @@
   <body>
         <%- include('partials/_header') %>
         <main style="margin: 1em;">
-    <center>
-      <h3>Login</h3>
-      <form action="/login" method="POST">
-        <table>
-          <tr>
-            <td>Username:</td>
-            <td><input type="email" name="email" /></td>
-          </tr>
-          <tr>
-            <td>Password</td>
-            <td>
-              <input type="password" name="password" />
-            </td>
-          </tr>
-        </table>
-      </form>
-    </center>
+      <div class="container">
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+          <div style="width: 20em;">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input style="width: 100%" type="text" name="email" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input style="width: 100%" type="password" name="password" id="password"
+                placeholder="Enter password">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Login" />
+          </div>
+        </form>
+      </div>
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
