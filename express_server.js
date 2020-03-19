@@ -53,10 +53,10 @@ app.post('/login', (req, res) => {
   const password = req.body.password;
   const user = checkIfValidUser(email);
 
-  if (!user.email) {
-    res.status(403).send('No user with this email.');
-  } else if (email === '' || password === '') {
+  if (email === '' || password === '') {
     res.status(403).send('Not a valid email and/or password.');
+  } else if (!user.email) {
+    res.status(403).send('No user with this email.');
   } else {
     res.cookie('user_id', user.id);
     res.redirect('/urls');
@@ -72,11 +72,6 @@ app.post('/urls/:shortURL', (req, res) => {
   urlDatabase[req.params.shortURL] = req.body.longURL;
   res.redirect(`/urls`);
 }); // edit
-
-app.post('/urls/:shortURL/delete', (req, res) => {
-  delete urlDatabase[req.params.shortURL];
-  res.redirect('/urls'); // delete
-});
 
 app.post('/urls', (req, res) => {
   const shortURL = generateRandomString();
@@ -120,6 +115,11 @@ app.get('/urls/:shortURL', (req, res) => {
 app.get('/u/:shortURL', (req, res) => {
   const longURL = urlDatabase[req.params.shortURL];
   res.redirect(longURL);
+});
+
+app.post('/urls/:shortURL/delete', (req, res) => {
+  delete urlDatabase[req.params.shortURL];
+  res.redirect('/urls'); // delete
 });
 
 app.post('/register', (req, res) => {
