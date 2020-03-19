@@ -134,7 +134,7 @@ app.post('/register', (req, res) => {
   } else {
     res.status(403).send('This email is already registered.');
   }
-}); // POST Registration form
+}); // POST Registration
 
 app.get('/register', (req, res) => {
   const user = req.cookies['user_id'];
@@ -145,7 +145,7 @@ app.get('/register', (req, res) => {
     user: loggedInUser
   };
   res.render('urls_register', templateVars);
-}); //GET Registration form
+}); //GET Registration
 
 app.get('/login', (req, res) => {
   const user = req.cookies['user_id'];
