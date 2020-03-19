@@ -35,7 +35,7 @@ const checkIfValidUser = email => {
     }
   }
   return false;
-};
+}; // check if user is in DB
 
 const newUser = (email, password) => {
   const user = generateRandomString();
