@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
     <!-- Bootstrap CSS -->
@@ -30,29 +30,33 @@
             <th scope="col">Delete</th>
           </tr>
         </thead>
+        <% if (!currentUser) {%>
+
+        <body>
+          Login or Register to view URL's
+        </body>
+        <% } else { %>
         <tbody>
-          <% for(let url in urls) { %>
+          <% for(let url of urls) { %>
           <tr>
-            <td><%= url %></td>
-            <td><%= urls[url] %></td>
+            <td><%= url.shortURL %></td>
+            <td><%= url.longURL %></td>
             <td>
               <form method="GET" action="/urls/<%= url %>">
-                <!-- blue outlined button -->
                 <button class="btn btn-outline-primary" type="submit">
                   Edit
-                </button></a
-              >
+                </button>
+              </form>
             </td>
             <td>
               <form method="POST" action="/urls/<%= url %>/delete">
-                <!-- red outlined button -->
                 <button class="btn btn-outline-danger" type="submit">
                   Delete
                 </button>
               </form>
             </td>
           </tr>
-          <% } %>
+          <% } %> <% } %>
         </tbody>
       </table>
     </main>
